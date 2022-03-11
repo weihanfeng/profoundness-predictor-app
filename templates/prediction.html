@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Profound or Not?</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<style>
+body {
+  font-family: 'Lato', sans-serif;
+  color: white;
+  background-color: teal;
+  text-align: center;
+}
+h1 {
+  font-size: 60px;
+  margin: 0px;
+  padding-bottom: 30px;
+}
+div.wrap {
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  vertical-align: middle;
+}
+div.wrap div {
+  position: relative;
+  margin: 50px 0;
+}
+
+button {
+  text-align: center;
+  padding: 1rem;
+  font-size: 20px;
+  background-color: #228be6;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  border-style: none;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+button:hover {
+  background-color: #4ea2eb;
+  transition: 0.3s all
+}
+
+label {
+  position: absolute;
+  top: 0;
+  font-size: 30px;
+  padding-bottom: 15px;
+  background-color: teal;
+  -webkit-transition: top .2s ease-in-out, 
+                      font-size .2s ease-in-out;
+  transition: top .2s ease-in-out, 
+              font-size .2s ease-in-out;
+}
+input[type=text] {
+  width: 100%;
+  border: 1px solid white;
+  font-size: 20px;
+  background-color: teal;
+  padding: 1rem;
+} 
+input[type=text]:focus {
+  outline: none;
+  background-color: #fff;
+  color: teal;
+}
+input[type=text]::placeholder {
+    color: white;
+}
+#output {
+  font-size: 60px;
+  font-weight: 700;
+  color:orange;
+}
+</style>
+    
+<body>
+    <div class="wrap">
+      <h1>Profound or Not?</h1>
+      <form action="/predict-quote" method="POST">
+        <input type="text" name="sentence" placeholder="Type a sentence here" required>
+        <button type="submit">Predict</button>
+            
+        </form>
+        {% if output %}
+<b id="output">{{ output }}</b>
+{% endif %}
+    </div>
+    
+</body>
+</html>
