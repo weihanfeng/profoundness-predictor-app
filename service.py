@@ -5,12 +5,12 @@ import re
 import numpy as np
 from nltk import pos_tag
 from nltk.tokenize import word_tokenize
-
+import os
 import cloudpickle
 
 app = Flask(__name__)
 
-@app.route('/predict-quote', methods = ["GET", "POST"])
+@app.route('/', methods = ["GET", "POST"])
 
 def predict_student_interface():
     
@@ -57,7 +57,10 @@ def predict_student_interface():
         sentence = [sentence]
 
 
-        model = cloudpickle.load(open('./finalized_model.pkl', 'rb'))
+        THIS_FOLDER = os.path.abspath(os.path.dirname(__file__))
+        my_file = THIS_FOLDER + '/finalized_model.pkl'
+
+        model = cloudpickle.load(open(my_file, 'rb'))
 
         sentence_df = pd.DataFrame(sentence, columns = ["title"])
         sentence_df = sentence_df.apply(sentence_length, axis = 1)
